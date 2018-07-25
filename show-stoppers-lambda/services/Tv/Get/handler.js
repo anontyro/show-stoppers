@@ -51,7 +51,9 @@ module.exports.getShowDetails = async (event, context, callback) => {
 module.exports.getShowSearch = async (event, context, callback) => {
     context.callbackWaitsForEmptyEventLoop = false;
 
-    const query = event.pathParameters.query;
+    const query = decodeURI(event.pathParameters.query);
+
+    console.log(query);
 
     const options = utils.buildGetRequestOptions('https://api.themoviedb.org/3/search/tv', 1, process.env.MOVIE_DB_KEY_V3, query);
 
