@@ -41,7 +41,13 @@ module.exports.getShowDetails = async (event, context, callback) => {
     callback(null, await utils.MovieDbGetRequest(options));
 
 }
-//get show search
+/**
+ * Get a search of Tv shows using the user entered parameter which is already url encoded
+ * and will get a list that best fits that query
+ * @param {*} event standard server event on call contains the query in pathParameters
+ * @param {*} context stamdard server context from aws
+ * @param {*} callback aws response method
+ */
 module.exports.getShowSearch = async (event, context, callback) => {
     context.callbackWaitsForEmptyEventLoop = false;
 
@@ -52,7 +58,14 @@ module.exports.getShowSearch = async (event, context, callback) => {
     callback(null, await utils.MovieDbGetRequest(options))
 }
 
-//get show similar
+/**
+ * Get similar shows to the show provided using the ShowId this will
+ * return a list of shows that are similar to the show provided
+ * this is useful to enhance the users experience
+ * @param {*} event 
+ * @param {*} context 
+ * @param {*} callback 
+ */
 module.exports.getSimilarShows = async (event, context, callback) => {
     context.callbackWaitsForEmptyEventLoop = false;
 
@@ -63,7 +76,12 @@ module.exports.getSimilarShows = async (event, context, callback) => {
     callback(null, await utils.MovieDbGetRequest(options));
 }
 
-//get discover TV
+/**
+ * Gets a predefined filter to allow the user to search via specific parameters
+ * @param {*} event 
+ * @param {*} context 
+ * @param {*} callback 
+ */
 module.exports.getDiscoverTv = async (event, context, callback) => {
     context.callbackWaitsForEmptyEventLoop = false;
 
@@ -73,7 +91,12 @@ module.exports.getDiscoverTv = async (event, context, callback) => {
     callback(null, await utils.MovieDbGetRequest(options));
 }
 
-//TV seasons
+/**
+ * Get details about a specific shows season 
+ * @param {*} event in pathParameters contains showId and season both ints
+ * @param {*} context 
+ * @param {*} callback 
+ */
 module.exports.getTvSeasons = async (event, context, callback) => {
     context.callbackWaitsForEmptyEventLoop = false;
 
@@ -85,7 +108,12 @@ module.exports.getTvSeasons = async (event, context, callback) => {
     callback(null, await utils.MovieDbGetRequest(options));
 }
 
-//TV episodes
+/**
+ * Get detailed information about a specific shows episode of a specific season
+ * @param {*} event contains three params showId, season, episode all int
+ * @param {*} context 
+ * @param {*} callback 
+ */
 module.exports.getTvEpisodes = async (event, context, callback) => {
     context.callbackWaitsForEmptyEventLoop = false;
 
