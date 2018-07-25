@@ -29,6 +29,30 @@ functions:
           method: get
           cors: true
 
+  getTvShowSearch:
+    handler: services/tv/get/handler.getShowSearch
+    events:
+      - http:
+          path: tv/search/{query}
+          method: get
+          cors: true
+
+  getDiscoverTvFilter:
+    handler: services/tv/get/handler.getDiscoverTv
+    events:
+      - http:
+          path: tv/filter
+          method: get
+          cors: true
+
+  getSimilarTvShows:
+    handler: services/tv/get/handler.getSimilarShows
+    events:
+      - http:
+          path: tv/similar/{showId}
+          method: get
+          cors: true
+
 
 plugins:
   - serverless-offline
