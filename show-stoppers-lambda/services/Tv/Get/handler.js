@@ -34,7 +34,7 @@ module.exports.getNowAiringTv = async (event, context, callback) => {
 module.exports.getShowDetails = async (event, context, callback) => {
     context.callbackWaitsForEmptyEventLoop = false;
 
-    const showId = event.pathParameters.showid;
+    const showId = event.pathParameters.showId;
 
     const options = utils.buildGetRequestOptions('https://api.themoviedb.org/3/tv/' + showId, 1, process.env.MOVIE_DB_KEY_V3);
 
@@ -61,8 +61,8 @@ module.exports.getSimilarShows = async (event, context, callback) => {
     const options = utils.buildGetRequestOptions(`https://api.themoviedb.org/3/tv/${showId}/similar`, 1, process.env.MOVIE_DB_KEY_V3);
 
     callback(null, await utils.MovieDbGetRequest(options));
-
 }
+
 //get discover TV
 module.exports.getDiscoverTv = async (event, context, callback) => {
     context.callbackWaitsForEmptyEventLoop = false;
@@ -71,15 +71,29 @@ module.exports.getDiscoverTv = async (event, context, callback) => {
     const options = utils.buildGetRequestOptions('https://api.themoviedb.org/3/discover/tv', 1, process.env.MOVIE_DB_KEY_V3, query);
 
     callback(null, await utils.MovieDbGetRequest(options));
-
 }
+
 //TV seasons
-module.exports.getTvSeasons = (event, context, callback) => {
+module.exports.getTvSeasons = async (event, context, callback) => {
     context.callbackWaitsForEmptyEventLoop = false;
 
+    const showId = event.pathParameters.showId;
+    const season = event.pathParameters.season;
+
+    const options = utils.buildGetRequestOptions(`https://api.themoviedb.org/3/tv/${showId}/season/${season}`, 1, process.env.MOVIE_DB_KEY_V3);
+
+    callback(null, await utils.MovieDbGetRequest(options));
 }
+
 //TV episodes
-module.exports.getTvEpisodes = (event, context, callback) => {
+module.exports.getTvEpisodes = async (event, context, callback) => {
     context.callbackWaitsForEmptyEventLoop = false;
 
+    const showId = event.pathParameters.showId;
+    const season = event.pathParameters.season;
+    const episode = event.pathParameters.episode;
+
+    const options = utils.buildGetRequestOptions(`https://api.themoviedb.org/3/tv/${showId}/season/${season}/episode/${episode}`, 1, process.env.MOVIE_DB_KEY_V3);
+
+    callback(null, await utils.MovieDbGetRequest(options));
 }

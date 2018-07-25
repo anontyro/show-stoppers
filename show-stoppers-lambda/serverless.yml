@@ -25,7 +25,7 @@ functions:
     handler: services/tv/get/handler.getShowDetails
     events:
       - http:
-          path: tv/{showid}
+          path: tv/{showId}
           method: get
           cors: true
 
@@ -50,6 +50,22 @@ functions:
     events:
       - http:
           path: tv/similar/{showId}
+          method: get
+          cors: true
+
+  getTvSeasonDetail:
+    handler: services/tv/get/handler.getTvSeasons
+    events:
+      - http:
+          path: tv/{showId}/{season}
+          method: get
+          cors: true
+
+  getTvSeasonEpisodeDetail:
+    handler: services/tv/get/handler.getTvEpisodes
+    events:
+      - http:
+          path: tv/{showId}/{season}/{episode}
           method: get
           cors: true
 
