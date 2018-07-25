@@ -21,6 +21,14 @@ functions:
           method: get
           cors: true
 
+  getTvShowDetails:
+    handler: services/tv/get/handler.getShowDetails
+    events:
+      - http:
+          path: tv/{showid}
+          method: get
+          cors: true
+
 
 plugins:
   - serverless-offline
