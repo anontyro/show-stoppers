@@ -1,0 +1,9 @@
+
+<div class="poster-container" (click)="onClickPoster()">
+  <div class="img-container">
+    <img src="{{(poster.poster_path === null? 'http://via.placeholder.com/150x225': posterPath +  poster.poster_path)}}" class="img-fluid poster-img" alt="">
+  </div>
+  <div class="info-container">
+    <p class="poster-name">{{poster.name}}</p>
+  </div>
+</div>

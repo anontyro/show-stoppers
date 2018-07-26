@@ -11,6 +11,7 @@ import { DetailViewComponent } from './features/detail-view/detail-view.componen
 import { MainLayoutComponent } from './_layout/main-layout/main-layout.component';
 import { RouterModule } from '../../node_modules/@angular/router';
 import { AppRoutes } from './routes';
+import { PosterComponent } from './features/index-view/components/poster/poster.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AppRoutes } from './routes';
     IndexViewComponent,
     ListViewComponent,
     DetailViewComponent,
-    MainLayoutComponent
+    MainLayoutComponent,
+    PosterComponent
   ],
   imports: [
     BrowserModule,

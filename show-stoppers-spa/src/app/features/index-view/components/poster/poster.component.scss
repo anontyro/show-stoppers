@@ -1,0 +1,18 @@
+.poster-container{
+    cursor: pointer;
+    margin: 2px;
+    position: relative;
+    .img-container{
+        background-color: #98e424;
+    }
+    .poster-img{
+        max-width: 150px;
+    }
+    .poster-img:hover {
+        opacity: 0.4;
+    }
+    .poster-name{
+        max-width: 150px;
+        text-align: center;
+    }
+}

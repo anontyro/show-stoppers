@@ -22,7 +22,7 @@ export class ApiHandlerService {
     const url = this.apiUrl + GLobalVars.tvRoutes.getNowAiring;
 
     if (!this.cachedNowShowing.observers.length || forceRefresh) {
-      this.createGetRequest(url).subscribe(results => this.cachedNowShowing.next(results.response));
+      this.createGetRequest(url).subscribe(results => this.cachedNowShowing.next(results.response.results));
     }
     return this.cachedNowShowing;
   }

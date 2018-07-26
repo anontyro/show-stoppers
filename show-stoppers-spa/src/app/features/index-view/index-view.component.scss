@@ -1,0 +1,10 @@
+.index-container{
+    display: flex;
+    justify-content: center;
+}
+.poster-view{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1000px;
+}

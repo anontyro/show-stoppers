@@ -1,5 +1,6 @@
 export const GLobalVars = {
     apiUri: 'http://localhost:3000/',
+    apiPosterUri: 'https://image.tmdb.org/t/p/w300/',
     tvRoutes: {
         getNowAiring: 'tv/now',
         /** tv/showId */

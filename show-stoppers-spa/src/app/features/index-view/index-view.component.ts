@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ApiHandlerService } from '../../services/api/api-handler.service';
 import { takeWhile } from 'rxjs/operators';
+import { TvItem } from '../../models/tvItem.model';
+import { GLobalVars } from '../../../data/GlobalVars';
 
 @Component({
   selector: 'app-index-view',
@@ -9,8 +11,7 @@ import { takeWhile } from 'rxjs/operators';
 })
 export class IndexViewComponent implements OnInit, OnDestroy {
 
-
-  public nowShowing: Array<any> = [];
+  public nowShowing: Array<TvItem> = [];
 
   private keepAlive = true;
 
@@ -21,6 +22,7 @@ export class IndexViewComponent implements OnInit, OnDestroy {
     .pipe(takeWhile(() => this.keepAlive))
       .subscribe(response => {
         console.log(response);
+        this.nowShowing = response;
       });
   }
 

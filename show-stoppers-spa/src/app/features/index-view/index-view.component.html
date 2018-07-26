@@ -1,3 +1,13 @@
-<p>
-  index-view works!
-</p>
+<div class="index-container">
+  <div class="header">
+
+  </div>
+  <div class="poster-view">
+    <div class="poster-container" *ngFor="let poster of nowShowing">
+      <app-poster [poster]="poster"></app-poster>
+    </div>
+  </div>
+  <div class="control-container">
+
+  </div>
+</div>
