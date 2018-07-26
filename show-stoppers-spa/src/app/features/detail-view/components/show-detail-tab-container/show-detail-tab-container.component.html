@@ -3,17 +3,21 @@
       <ng-template ngbTabContent>
         <div class="tab-contain">
           <p class="line-break"></p>
-          <p>Seasons: <span class="season-count" *ngFor="let s of getSeasons(); let i = index">{{i + 1}}</span> </p>
-          <app-show-detail-tab-season [season]="getActiveSeason()" ></app-show-detail-tab-season>
+          <p>Seasons: <span [ngClass]="{'selected-season': i+1 === currentSeason}" (click)="changeSeason(i+1)" class="season-count" *ngFor="let s of getSeasons(); let i = index">{{i + 1}}</span> </p>
+          <app-show-detail-tab-season [season]="getActiveSeason()" *ngIf="!loadingSeason" ></app-show-detail-tab-season>
+          <div class="loading-season" *ngIf="loadingSeason">
+            <div class="progress-bar">
+              <div class="loaded"></div>
+           </div>
+          </div>
         </div>
  </ng-template>
     </ngb-tab>
     <ngb-tab title="Similar">
         <ng-template ngbTabContent>
-          <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth
-          master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh
-          dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum
-          iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+          <div class="tab-contain">
+            <app-similar-show-tab [similarShows]="similarShows"></app-similar-show-tab>
+          </div>
         </ng-template>
       </ngb-tab>
 
