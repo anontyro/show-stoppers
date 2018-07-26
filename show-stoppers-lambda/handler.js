@@ -1,4 +1,5 @@
 'use strict';
+require('request');
 
 module.exports.hello = (event, context, callback) => {
   const response = {

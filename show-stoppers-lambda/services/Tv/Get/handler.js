@@ -4,7 +4,7 @@
  * This is the method used to communicate with the movie database data
  */
 'use strict'
-
+require('request');
 require('dotenv').config();
 const utils = require('../../utils/utils');
 
