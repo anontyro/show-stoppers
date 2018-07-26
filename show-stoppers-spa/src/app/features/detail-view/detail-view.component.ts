@@ -19,6 +19,8 @@ export class DetailViewComponent implements OnInit, OnDestroy {
   public seasonDetail: Array<Season> = [];
   public similarShows: Array<TvItem>;
 
+  public pageLoading = false;
+
   constructor(
     private route: ActivatedRoute,
     private apiService: ApiHandlerService
@@ -29,10 +31,19 @@ export class DetailViewComponent implements OnInit, OnDestroy {
      .pipe(takeWhile(() => this.keepAlive))
       .subscribe(params => {
       this.showId = params['id'];
+      this.buildPage();
     });
+
+  }
+
+  private buildPage() {
+    this.pageLoading = true;
     this.apiService.getTvShowDetails(this.showId)
       .pipe(takeWhile(() => this.keepAlive))
-      .subscribe(response => this.showDetail = response.response);
+      .subscribe(response => {
+        this.showDetail = response.response;
+        this.pageLoading = false;
+      });
 
     this.apiService.getSeasonDetail(this.showId, 1)
       .pipe(takeWhile(() => this.keepAlive))

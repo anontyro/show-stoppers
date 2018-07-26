@@ -1,3 +1,5 @@
-<p>
-  similar-show-tab works!
-</p>
+<div class="similar-container">
+  <div class="show-item" *ngFor="let show of similarShows.results">
+    <app-poster [poster]="show"></app-poster>
+  </div>
+</div>
