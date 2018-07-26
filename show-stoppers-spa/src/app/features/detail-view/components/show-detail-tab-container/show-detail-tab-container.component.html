@@ -1,10 +1,12 @@
 <ngb-tabset>
     <ngb-tab title="Episodes">
       <ng-template ngbTabContent>
-        <p class="line-break"></p>
-        <p>Seasons: <span class="season-count" *ngFor="let s of getSeasons(); let i = index">{{i + 1}}</span> </p>
-        <app-show-detail-tab-season></app-show-detail-tab-season>
-      </ng-template>
+        <div class="tab-contain">
+          <p class="line-break"></p>
+          <p>Seasons: <span class="season-count" *ngFor="let s of getSeasons(); let i = index">{{i + 1}}</span> </p>
+          <app-show-detail-tab-season [season]="getActiveSeason()" ></app-show-detail-tab-season>
+        </div>
+ </ng-template>
     </ngb-tab>
     <ngb-tab title="Similar">
         <ng-template ngbTabContent>

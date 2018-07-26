@@ -3,6 +3,14 @@
     margin: 10px 5px;
 }
 
+.tab-contain{
+    height: 70vh;
+    overflow: auto;
+    padding-left: 10px;
+    border-left: 1px solid #dee2e6;
+    border-bottom: 1px solid #dee2e6;
+}
+
 span.season-count{
     cursor: pointer;
     margin: 3px;

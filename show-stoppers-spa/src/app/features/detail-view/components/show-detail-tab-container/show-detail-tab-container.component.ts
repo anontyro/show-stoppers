@@ -13,6 +13,9 @@ export class ShowDetailTabContainerComponent implements OnInit {
   public totalSeasons = 1;
 
   @Input()
+  public showId;
+
+  @Input()
   public seasonDetail: Array<Season>;
 
   @Input()
@@ -21,6 +24,18 @@ export class ShowDetailTabContainerComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  public getActiveSeason(season = 1) {
+    if (!this.seasonDetail) {
+      return;
+    }
+    for (let i = 0; i < this.seasonDetail.length; i++) {
+      if (this.seasonDetail[i].season_number === season) {
+        return this.seasonDetail[i];
+      }
+    }
+    return this.seasonDetail[0];
   }
 
   public getSeasons() {

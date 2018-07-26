@@ -1,0 +1,13 @@
+.episode-container{
+    display: flex;
+    margin: 20px 0px;
+    .epi-number{
+        width: 30px;
+    }
+    .epi-name{
+        flex-grow: 1;
+    }
+    .epi-air{
+        width: 100px;
+    }
+}

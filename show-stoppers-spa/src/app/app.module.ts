@@ -15,6 +15,7 @@ import { PosterComponent } from './features/index-view/components/poster/poster.
 import { ShowDetailContainerComponent } from './features/detail-view/components/show-detail-container/show-detail-container.component';
 import { ShowDetailTabContainerComponent } from './features/detail-view/components/show-detail-tab-container/show-detail-tab-container.component';
 import { ShowDetailTabSeasonComponent } from './features/detail-view/components/show-detail-tab-season/show-detail-tab-season.component';
+import { EpisodeItemComponent } from './features/detail-view/components/episode-item/episode-item.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ShowDetailTabSeasonComponent } from './features/detail-view/components/
     PosterComponent,
     ShowDetailContainerComponent,
     ShowDetailTabContainerComponent,
-    ShowDetailTabSeasonComponent
+    ShowDetailTabSeasonComponent,
+    EpisodeItemComponent
   ],
   imports: [
     BrowserModule,

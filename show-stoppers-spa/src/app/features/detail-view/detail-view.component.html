@@ -2,7 +2,7 @@
   <div class="left-container">
     <app-show-detail-container [showDetail]="showDetail"></app-show-detail-container>
   </div>
-  <div class="main-container">
-    <app-show-detail-tab-container [totalSeasons]="showDetail?.number_of_seasons" [seasonDetail]="seasonDetail" [similarShows]="similarShows"></app-show-detail-tab-container>
+  <div class="main-container" *ngIf="seasonDetail">
+    <app-show-detail-tab-container [showId]="showDetail?.id" [totalSeasons]="showDetail?.number_of_seasons" [seasonDetail]="seasonDetail" [similarShows]="similarShows"></app-show-detail-tab-container>
   </div>
 </div>

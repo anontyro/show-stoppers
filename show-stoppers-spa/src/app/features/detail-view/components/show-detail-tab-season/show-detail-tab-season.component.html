@@ -1,3 +1,6 @@
-<p>
-  show-detail-tab-season works!
-</p>
+<div class="detail-season">
+  <p *ngIf="season?.overview.length > 10">{{season?.overview}}</p>
+  <div class="episode-list" *ngFor="let episode of season?.episodes">
+    <app-episode-item [episode]="episode"></app-episode-item>
+  </div>
+</div>
