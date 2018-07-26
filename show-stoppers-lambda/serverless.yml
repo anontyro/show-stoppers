@@ -12,7 +12,7 @@ provider:
 functions:
 
   getNowAiringTv:
-    handler: services/tv/get/handler.getNowAiringTv
+    handler: handler.getNowAiringTv
     events:
       - http:
           path: tv/now
@@ -20,7 +20,7 @@ functions:
           cors: true
 
   getTvShowDetails:
-    handler: services/tv/get/handler.getShowDetails
+    handler: handler.getShowDetails
     events:
       - http:
           path: tv/{showId}
@@ -28,7 +28,7 @@ functions:
           cors: true
 
   getTvShowSearch:
-    handler: services/tv/get/handler.getShowSearch
+    handler: handler.getShowSearch
     events:
       - http:
           path: tv/search/{query}
@@ -36,7 +36,7 @@ functions:
           cors: true
 
   getDiscoverTvFilter:
-    handler: services/tv/get/handler.getDiscoverTv
+    handler: handler.getDiscoverTv
     events:
       - http:
           path: tv/filter
@@ -44,7 +44,7 @@ functions:
           cors: true
 
   getSimilarTvShows:
-    handler: services/tv/get/handler.getSimilarShows
+    handler: handler.getSimilarShows
     events:
       - http:
           path: tv/similar/{showId}
@@ -52,7 +52,7 @@ functions:
           cors: true
 
   getTvSeasonDetail:
-    handler: services/tv/get/handler.getTvSeasons
+    handler: handler.getTvSeasons
     events:
       - http:
           path: tv/{showId}/{season}
@@ -60,7 +60,7 @@ functions:
           cors: true
 
   getTvSeasonEpisodeDetail:
-    handler: services/tv/get/handler.getTvEpisodes
+    handler: handler.getTvEpisodes
     events:
       - http:
           path: tv/{showId}/{season}/{episode}
