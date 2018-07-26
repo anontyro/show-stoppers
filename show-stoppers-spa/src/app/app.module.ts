@@ -12,6 +12,8 @@ import { MainLayoutComponent } from './_layout/main-layout/main-layout.component
 import { RouterModule } from '../../node_modules/@angular/router';
 import { AppRoutes } from './routes';
 import { PosterComponent } from './features/index-view/components/poster/poster.component';
+import { ShowDetailContainerComponent } from './features/detail-view/components/show-detail-container/show-detail-container.component';
+import { ShowDetailTabContainerComponent } from './features/detail-view/components/show-detail-tab-container/show-detail-tab-container.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { PosterComponent } from './features/index-view/components/poster/poster.
     ListViewComponent,
     DetailViewComponent,
     MainLayoutComponent,
-    PosterComponent
+    PosterComponent,
+    ShowDetailContainerComponent,
+    ShowDetailTabContainerComponent
   ],
   imports: [
     BrowserModule,

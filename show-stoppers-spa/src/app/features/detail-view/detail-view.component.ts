@@ -3,6 +3,7 @@ import { ActivatedRoute } from '../../../../node_modules/@angular/router';
 import { ApiHandlerService } from '../../services/api/api-handler.service';
 import { takeWhile } from '../../../../node_modules/rxjs/operators';
 import { TvItem } from '../../models/tvItem.model';
+import { Season } from '../../models/season.model';
 
 @Component({
   selector: 'app-detail-view',
@@ -15,7 +16,8 @@ export class DetailViewComponent implements OnInit, OnDestroy {
   private keepAlive = true;
 
   public showDetail: TvItem;
-  public seasonDetail;
+  public seasonDetail: Array<Season> = [];
+  public similarShows: Array<TvItem>;
 
   constructor(
     private route: ActivatedRoute,
@@ -33,8 +35,12 @@ export class DetailViewComponent implements OnInit, OnDestroy {
       .subscribe(response => this.showDetail = response.response);
 
     this.apiService.getSeasonDetail(this.showId, 1)
-    .pipe(takeWhile(() => this.keepAlive))
-    .subscribe(response => console.log(response.response));
+      .pipe(takeWhile(() => this.keepAlive))
+      .subscribe(response => this.seasonDetail.push(response.response));
+
+    this.apiService.getSimilarShows(this.showId)
+      .pipe(takeWhile(() => this.keepAlive))
+      .subscribe(response => this.similarShows = response.response);
   }
 
 
