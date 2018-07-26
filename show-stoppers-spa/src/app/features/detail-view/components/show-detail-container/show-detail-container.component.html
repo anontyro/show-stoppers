@@ -1,3 +1,19 @@
-<p>
-  show-detail-container works!
-</p>
+<div class="detail-container" *ngIf="showDetail">
+  <div class="show-img" *ngIf="showDetail?.poster_path">
+    <div class="img-container">
+      <img src="{{(showDetail.poster_path === null? 'http://via.placeholder.com/150x225': posterPath +  showDetail.poster_path)}}" class="img-fluid side-img" alt="">
+    </div>
+  </div>
+  <div class=" show-info">
+    <p class="sub-title show-title">
+      {{showDetail.name}}
+    </p>
+    <p class="inline-txt show-cast">
+
+    </p>
+    <p class="inline-txt show-blurb" >
+      {{showDetail.overview.length < 200 || showExtendedBlurb === true? showDetail.overview : showDetail.overview.substring(0,200) + '...' }}
+      <span class="inline-link" (click)="showExtendedBlurb = !showExtendedBlurb" *ngIf="showDetail.overview.length >= 200">{{showExtendedBlurb? 'Hide': 'Show more'}}</span>
+    </p>
+ </div>
+</div>

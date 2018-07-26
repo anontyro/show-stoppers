@@ -14,6 +14,7 @@ import { AppRoutes } from './routes';
 import { PosterComponent } from './features/index-view/components/poster/poster.component';
 import { ShowDetailContainerComponent } from './features/detail-view/components/show-detail-container/show-detail-container.component';
 import { ShowDetailTabContainerComponent } from './features/detail-view/components/show-detail-tab-container/show-detail-tab-container.component';
+import { ShowDetailTabSeasonComponent } from './features/detail-view/components/show-detail-tab-season/show-detail-tab-season.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ShowDetailTabContainerComponent } from './features/detail-view/componen
     MainLayoutComponent,
     PosterComponent,
     ShowDetailContainerComponent,
-    ShowDetailTabContainerComponent
+    ShowDetailTabContainerComponent,
+    ShowDetailTabSeasonComponent
   ],
   imports: [
     BrowserModule,

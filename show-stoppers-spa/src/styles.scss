@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+html{
+    height: 100%;
+}
+body{
+    height: 100%;
+}
+
+p.sub-title{
+    font-size: 1.3em;
+    color: grey;
+    font-weight: 500;
+}
+
+.inline-txt{
+
+}
+
+.inline-link{
+    cursor: pointer;
+    color: gray;
+}
+.inline-link:hover{
+    color: green;
+}

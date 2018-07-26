@@ -10,6 +10,9 @@ import { TvItem } from '../../../../models/tvItem.model';
 export class ShowDetailTabContainerComponent implements OnInit {
 
   @Input()
+  public totalSeasons = 1;
+
+  @Input()
   public seasonDetail: Array<Season>;
 
   @Input()
@@ -18,6 +21,16 @@ export class ShowDetailTabContainerComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  public getSeasons() {
+    if (!this.totalSeasons) {
+      return;
+    }
+    const season = Array(this.totalSeasons)
+      .map((x, i) => i + 1);
+
+      return season;
   }
 
 }
