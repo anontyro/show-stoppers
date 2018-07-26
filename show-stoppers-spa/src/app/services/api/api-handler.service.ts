@@ -27,6 +27,24 @@ export class ApiHandlerService {
     return this.cachedNowShowing;
   }
 
+  public getTvShowDetails(showId: number) {
+    const url = this.apiUrl + GLobalVars.tvRoutes.getShowDetail + showId;
+
+    return this.createGetRequest(url);
+  }
+
+  public getSimilarShows(showId: number) {
+    const url = this.apiUrl + GLobalVars.tvRoutes.getSimilarShows + showId;
+
+    return this.createGetRequest(url);
+  }
+
+  public getSeasonDetail(showId: number, season: number) {
+    const url = this.apiUrl + GLobalVars.tvRoutes.getSeasonDetail + showId + '/' + season;
+
+    return this.createGetRequest(url);
+  }
+
 
   private createGetRequest(url: string): Observable<any> {
     return this.http.get(url);
