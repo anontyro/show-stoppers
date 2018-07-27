@@ -1,3 +1,5 @@
+$bgColor: #44b78b;
+
 .main-layout{
     min-height: 100%;
     .layout-body{
@@ -11,12 +13,19 @@
 }
 
 .bg-dark {
-    background-color: #333100!important;
+    background-color: $bgColor !important;
 }
 
 .layout-footer {
     width: 100%;
     height: 100px;
-    background-color: #333100;
+    background-color: $bgColor;
     margin-top: -100px;
+    .footer-content{
+        .credits{
+            text-align: center;
+            padding-top: 40px;
+            color: white;
+        }
+    }
 }

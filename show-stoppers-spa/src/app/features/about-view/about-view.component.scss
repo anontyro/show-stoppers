@@ -1,0 +1,17 @@
+.main-about {
+    display: flex;
+    justify-content: center;
+}
+.about-body {
+    display: flex;
+    flex-direction: column;
+    max-width: 60%;
+    justify-content: center;
+    padding: 10px;
+    border: 1px grey solid;
+    border-radius: 5px;
+    h3{
+        color: grey;
+        text-align: center;
+    }
+}
