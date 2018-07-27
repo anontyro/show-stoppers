@@ -1,34 +1,11 @@
+import { MockSeason1 } from './../../../mocks/mocks';
 import { Season } from './../../models/season.model';
 import { TvItem } from './../../models/tvItem.model';
 import { GLobalVars } from './../../../data/GlobalVars';
 import { TestBed, inject, getTestBed } from '@angular/core/testing';
 import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
 import { ApiHandlerService } from './api-handler.service';
-
-const mockShow1: TvItem = {
-  backdrop_path: '',
-  first_air_date: new Date(),
-  genre_ids: [],
-  id: 123,
-  origin_country: [],
-  original_language: 'english',
-  original_name: 'Test Name',
-  overview: 'A show',
-  popularity: 12.2,
-  poster_path: '',
-  vote_average: 5,
-  vote_count: 100
-};
-
-const mockSeason: Season = {
-  air_date: new Date(),
-  episodes: [],
-  id: 777,
-  name: 'first season',
-  overview: 'a show with seasons',
-  poster_path: 'location.jpg',
-  season_number: 1,
-};
+import { MockTv1 } from '../../../mocks/mocks';
 
 describe('ApiHandlerService', () => {
   let injector: TestBed;
@@ -82,7 +59,7 @@ describe('ApiHandlerService', () => {
 
     const req = httpMock.expectOne(url + showId);
     expect(req.request.method).toBe('GET');
-    req.flush(mockShow1);
+    req.flush(MockTv1);
   });
 
   it('should get similar shows by show id', () => {
@@ -96,7 +73,7 @@ describe('ApiHandlerService', () => {
 
     const req = httpMock.expectOne(url + showId);
     expect(req.request.method).toBe('GET');
-    req.flush([mockShow1, mockShow1, mockShow1]);
+    req.flush([MockTv1, MockTv1, MockTv1]);
   });
 
   it('should get seasons details for the showID', () => {
@@ -110,7 +87,7 @@ describe('ApiHandlerService', () => {
 
     const req = httpMock.expectOne(url + showId + '/' + seasons);
     expect(req.request.method).toBe('GET');
-    req.flush(mockSeason);
+    req.flush(MockSeason1);
 
   });
 
