@@ -12,4 +12,5 @@ export class TvItem {
     public poster_path: string;
     public vote_average: number;
     public vote_count: number;
+    public name?: string;
 }

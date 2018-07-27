@@ -15,7 +15,7 @@ import { TvItem } from '../../../../models/tvItem.model';
 export class SimilarShowTabComponent implements OnInit {
   /** required Array of all the TvItem that are someway related */
   @Input()
-  public similarShows: Array<TvItem>;
+  public similarShows: any;
   constructor() { }
 
   ngOnInit() {

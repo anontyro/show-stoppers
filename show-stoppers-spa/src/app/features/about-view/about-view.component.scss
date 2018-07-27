@@ -15,3 +15,10 @@
         text-align: center;
     }
 }
+
+@media only screen and (max-width: 770px) {
+    .about-body{
+        max-width: 100% !important;
+        border: unset;
+    }
+}
