@@ -6,7 +6,7 @@ export class Season {
     public overview: string;
     public poster_path: string;
     public season_number: number;
-    public _id: string;
+    public _id?: string;
 }
 
 export class Episode {

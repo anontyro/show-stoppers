@@ -30,7 +30,7 @@ const mockSeason: Season = {
   season_number: 1,
 };
 
-fdescribe('ApiHandlerService', () => {
+describe('ApiHandlerService', () => {
   let injector: TestBed;
   let service: ApiHandlerService;
   let httpMock: HttpTestingController;

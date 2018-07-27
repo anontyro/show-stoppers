@@ -13,6 +13,7 @@ import { RouterModule } from '../../node_modules/@angular/router';
 import { AppRoutes } from './routes';
 import { PosterComponent } from './features/index-view/components/poster/poster.component';
 import { ShowDetailContainerComponent } from './features/detail-view/components/show-detail-container/show-detail-container.component';
+// tslint:disable-next-line:max-line-length
 import { ShowDetailTabContainerComponent } from './features/detail-view/components/show-detail-tab-container/show-detail-tab-container.component';
 import { ShowDetailTabSeasonComponent } from './features/detail-view/components/show-detail-tab-season/show-detail-tab-season.component';
 import { EpisodeItemComponent } from './features/detail-view/components/episode-item/episode-item.component';
