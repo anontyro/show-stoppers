@@ -1,5 +1,5 @@
 export const GLobalVars = {
-    apiUri: 'http://localhost:3000/',
+    apiUri: 'https://1yjzj2zqii.execute-api.us-east-1.amazonaws.com/dev/',
     apiPosterUri: 'https://image.tmdb.org/t/p/w300/',
     tvRoutes: {
         getNowAiring: 'tv/now',
@@ -7,6 +7,7 @@ export const GLobalVars = {
         getShowDetail: 'tv/',
         /** uri encoded query */
         getShowSearch: 'tv/search/',
+        /** predefined filters not fully implemented */
         getDiscoverFilter: 'tv/filter',
         /** tv/similar/showId */
         getSimilarShows: 'tv/similar/',
@@ -16,3 +17,4 @@ export const GLobalVars = {
         getEpisodeDetail: 'tv/'
     }
 };
+// https://1yjzj2zqii.execute-api.us-east-1.amazonaws.com/dev/tv/now/

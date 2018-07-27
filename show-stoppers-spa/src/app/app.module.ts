@@ -17,6 +17,10 @@ import { ShowDetailTabContainerComponent } from './features/detail-view/componen
 import { ShowDetailTabSeasonComponent } from './features/detail-view/components/show-detail-tab-season/show-detail-tab-season.component';
 import { EpisodeItemComponent } from './features/detail-view/components/episode-item/episode-item.component';
 import { SimilarShowTabComponent } from './features/detail-view/components/similar-show-tab/similar-show-tab.component';
+import { SearchViewComponent } from './features/search-view/search-view.component';
+import { AboutViewComponent } from './features/about-view/about-view.component';
+import { SearchBarComponent } from './features/search-view/components/search-bar/search-bar.component';
+import { SearchResultsComponent } from './features/search-view/components/search-results/search-results.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,11 @@ import { SimilarShowTabComponent } from './features/detail-view/components/simil
     ShowDetailTabContainerComponent,
     ShowDetailTabSeasonComponent,
     EpisodeItemComponent,
-    SimilarShowTabComponent
+    SimilarShowTabComponent,
+    SearchViewComponent,
+    AboutViewComponent,
+    SearchBarComponent,
+    SearchResultsComponent
   ],
   imports: [
     BrowserModule,
