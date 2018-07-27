@@ -1,4 +1,16 @@
-
+.search-container {
+    display: flex;
+    justify-content: center;
+}
+.search-align-container{
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.search-bar-item{
+    width: 500px;
+}
 .search-pagination{
     p{
         text-align: center;

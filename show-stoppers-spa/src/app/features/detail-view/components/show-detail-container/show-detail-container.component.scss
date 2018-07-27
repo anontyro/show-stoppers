@@ -13,3 +13,25 @@
         padding: 0px 20px;
     }
 }
+
+@media only screen and (max-width: 770px) {
+    .detail-container{
+        display: flex;
+    }
+    .show-img{
+        margin: auto;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .detail-container{
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0;
+        box-shadow: unset;
+        border: unset;
+    }
+    .show-img{
+        margin: auto;
+    }
+}

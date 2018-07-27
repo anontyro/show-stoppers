@@ -1,11 +1,21 @@
 .main-detail-container{
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     .left-container{
         margin: 0px 20px;
         width: 345px;
     }
     .main-container{
         width: 50%;
+    }
+}
+
+@media only screen and (max-width: 770px) {
+    .left-container{
+        width: 100% !important;
+    }
+    .main-container{
+        width: 100% !important;
     }
 }
