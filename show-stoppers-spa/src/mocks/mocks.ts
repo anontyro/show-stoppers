@@ -25,3 +25,13 @@ export const MockSeason1: Season = {
         poster_path: 'location.jpg',
         season_number: 1,
 };
+
+export const MockSeason2: Season = {
+    air_date: new Date(),
+    episodes: [],
+    id: 557,
+    name: 'second season',
+    overview: 'a show with more seasons',
+    poster_path: 'location2.jpg',
+    season_number: 2,
+};
