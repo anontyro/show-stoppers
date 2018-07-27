@@ -1,4 +1,18 @@
 <div class="search-container">
   <app-search-bar (searchEvent)="onNextSearch($event)"></app-search-bar>
-  <app-search-results></app-search-results>
+  <app-search-results [currentSearch]="currentSearch"></app-search-results>
+
+  <div class="search-pagination">
+    <p>Page {{currentPage}} of {{totalPages}}</p>
+    
+    <div class="pagination-control">
+      <span class="inline-link" [routerLink]="['/search']" [queryParams]="{query: currentQuery, page: currentPage - 1}"  *ngIf="currentPage > 1">Previous</span> 
+      <span *ngIf="currentPage === 1">Previous</span> 
+  
+      <span class="inline-link" [routerLink]="['/search']" [queryParams]="{query: currentQuery, page: currentPage + 1}"  *ngIf="currentPage < totalPages">Next</span> 
+      <span *ngIf="currentPage === totalPages">Next</span>
+    </div>
+ 
+
+  </div>
 </div>

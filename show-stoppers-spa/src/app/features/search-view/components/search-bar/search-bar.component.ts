@@ -1,6 +1,6 @@
 import { TvItem } from './../../../../models/tvItem.model';
 import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiHandlerService } from '../../../../services/api/api-handler.service';
 import { filter, takeWhile } from 'rxjs/operators';
 
@@ -19,32 +19,42 @@ export class SearchBarComponent implements OnInit, OnDestroy {
 
   private queryParam: string;
 
+  private pageSearch = 1;
+
   public userSearch = '';
 
-  constructor(private route: ActivatedRoute, private apiService: ApiHandlerService) { }
+  constructor(private route: ActivatedRoute, private apiService: ApiHandlerService, private router: Router) { }
 
   ngOnInit() {
     this.route.queryParams
-      .pipe(filter(params => params.query), takeWhile(() => this.keepAlive))
+      .pipe(filter(params => params.query || params.page), takeWhile(() => this.keepAlive))
       .subscribe(params => {
-        console.log(params);
         this.queryParam = params.query;
-        this.onSearch();
+        if (params.page) {
+          this.pageSearch = params.page;
+        }
+        this.onSearch(this.pageSearch);
       });
-
   }
 
-  public onSearch() {
+  public searchBtnPress() {
+    if (this.userSearch === '') {
+      return;
+    }
+    this.router.navigate(['/search'], {queryParams: {query: encodeURI(this.userSearch.trim()), page: 1}});
+    this.userSearch = '';
+  }
+
+  public onSearch(page: number) {
     if (this.userSearch !== '') {
       this.apiSearch(encodeURI(this.userSearch.trim()));
     } else if (this.queryParam) {
-      this.apiSearch(this.queryParam);
+      this.apiSearch(this.queryParam, page);
     }
   }
 
-  private apiSearch(query) {
-    this.apiService.getTvSearch(query).subscribe(response => {
-      console.log(response);
+  private apiSearch(query, page = 1) {
+    this.apiService.getTvSearch(query, page).subscribe(response => {
       this.searchEvent.emit(response.response);
     });
   }

@@ -1,4 +1,3 @@
-import { GLobalVars } from './../../../data/GlobalVars';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, ReplaySubject } from 'rxjs';
@@ -46,8 +45,8 @@ export class ApiHandlerService {
     return this.createGetRequest(url);
   }
 
-  public getTvSearch(query: string) {
-    const url = this.apiUrl + GLobalVars.tvRoutes.getShowSearch + query;
+  public getTvSearch(query: string, page = 1) {
+    const url = this.apiUrl + GLobalVars.tvRoutes.getShowSearch + query + '/' + page;
 
     return this.createGetRequest(url);
   }
