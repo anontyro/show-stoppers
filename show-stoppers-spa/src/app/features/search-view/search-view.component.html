@@ -3,7 +3,7 @@
       <app-search-bar (searchEvent)="onNextSearch($event)" class="search-bar-item"></app-search-bar>
       <app-search-results [currentSearch]="currentSearch"></app-search-results>
     
-      <div class="search-pagination">
+      <div class="search-pagination" *ngIf="totalResults !== 0">
         <p>Page {{currentPage}} of {{totalPages}}</p>
         
         <div class="pagination-control">

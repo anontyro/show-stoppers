@@ -1,6 +1,6 @@
 <div class="search-bar">
   <div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="Search For a Show" name="searchBar" aria-label="Search For a Show" aria-describedby="search-bar-input" [(ngModel)]="userSearch">
+    <input type="text" class="form-control" (keyup.enter)="searchBtnPress()" placeholder="Search For a Show" name="searchBar" aria-label="Search For a Show" aria-describedby="search-bar-input" [(ngModel)]="userSearch">
     <div class="input-group-append">
       <button class="btn btn-outline-secondary" (click)="searchBtnPress()" type="button" id="search-bar-input">Search</button>
     </div>
