@@ -6,10 +6,11 @@
 'use strict';
 
 const requests = require('./services/utils/apiUtils');
-
+var jwt = require('jsonwebtoken');
 const auth = require('./services/auth/auth');
-
 const policyCreation = require('./services/auth/auth').buildIAMPolicy;
+
+const userActions = require('./services/users/userActions');
 
 /**
  * Get the now airing TV shows for the current day
@@ -154,10 +155,34 @@ module.exports.getTvEpisodes = (event, context, callback) => {
 }
 
 module.exports.getUserFavourites = (event, context, callback) => {
+  context.callbackWaitsForEmptyEventLoop = false;
+
+  try{
+    const username = JSON.parse(event.requestContext.authorizer.user).username;
+
+    userActions.getFavourites(username, response => {
+      callback(null, {
+        statusCode: 200,
+        body: JSON.stringify({
+          user: response
+        })
+      })
+    })
+  } catch (ex) {
+    callback(null, {
+      statusCode: 400,
+      body: JSON.stringify({
+        error: ex
+      })
+    })
+  }
+
 
 }
 
 module.exports.postUserFavourite = (event, context, callback) => {
+  context.callbackWaitsForEmptyEventLoop = false;
+
   
 }
 
@@ -208,7 +233,7 @@ module.exports.isUserAuthorised = (event, context, callback) => {
       const userId = decoded.id;
       console.log(decoded);
 
-      userLookupById(userId, user => {
+      userActions.userLookupById(userId, user => {
           const isAllowed = 'Allow';
           const authContext = {user: JSON.stringify({ id: user._id, username: user.email, firstname: user.firstname, lastname: user.lastname})};
           const policy = policyCreation(userId, isAllowed, event.methodArn, authContext);
@@ -221,3 +246,4 @@ module.exports.isUserAuthorised = (event, context, callback) => {
   }
 
 }
+

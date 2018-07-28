@@ -48,8 +48,5 @@ const userSchema = mongoose.Schema({
 
 }, {collection: 'show_stoppers_users'});
 
-const user = mongoose.model('User', userSchema);
 
-module.exports = {
-    User: user
-}
+module.exports =  mongoose.model('User', userSchema);

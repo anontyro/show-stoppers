@@ -3,9 +3,15 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const connectToDatabase = require('../../connect');
+const User = require('../../models/User');
 
-const User = require('../../models/User').User;
-
+/**
+ * Login method that will check the user email and password are correct along with them being validated first
+ * then they will get a JWT token back
+ * @param {*} email 
+ * @param {*} password 
+ * @param {*} callback 
+ */
 module.exports.login = (email, password, callback) => {
     if(!email || !password) {
         throw new Error('username or password not present');
@@ -49,6 +55,11 @@ module.exports.login = (email, password, callback) => {
 
 }
 
+/**
+ * Allows a user to sign up for the site just using the typical method using the database
+ * @param {*} event 
+ * @param {*} callback 
+ */
 module.exports.register = (event, callback) => {
     const {firstname, lastname, email, password} = JSON.parse(event.body);
 
@@ -88,6 +99,13 @@ module.exports.register = (event, callback) => {
         });
 }
 
+/**
+ * Authorization policy from AWS to allow users to verfiy their JWT and login
+ * @param {*} userId 
+ * @param {*} effect 
+ * @param {*} resource 
+ * @param {*} context 
+ */
 module.exports.buildIAMPolicy = (userId, effect, resource,context) => {
     const policy = {
         principalId: userId,
@@ -102,7 +120,7 @@ module.exports.buildIAMPolicy = (userId, effect, resource,context) => {
           ],
         },
         context,
-      };
+    };
     
-      return policy;
+    return policy;
 }
