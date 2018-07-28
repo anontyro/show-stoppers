@@ -1,0 +1,72 @@
+
+service: show-stoppers-lambda
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  memorySize: 128
+  timeout: 10
+  stage: production
+  region: ap-southeast-1
+
+functions:
+
+  getNowAiringTv:
+    handler: handler.getNowAiringTv
+    events:
+      - http:
+          path: tv/now
+          method: get
+          cors: true
+
+  getTvShowDetails:
+    handler: handler.getShowDetails
+    events:
+      - http:
+          path: tv/{showId}
+          method: get
+          cors: true
+
+  getTvShowSearch:
+    handler: handler.getShowSearch
+    events:
+      - http:
+          path: tv/search/{query}
+          method: get
+          cors: true
+
+  getDiscoverTvFilter:
+    handler: handler.getDiscoverTv
+    events:
+      - http:
+          path: tv/filter
+          method: get
+          cors: true
+
+  getSimilarTvShows:
+    handler: handler.getSimilarShows
+    events:
+      - http:
+          path: tv/similar/{showId}
+          method: get
+          cors: true
+
+  getTvSeasonDetail:
+    handler: handler.getTvSeasons
+    events:
+      - http:
+          path: tv/{showId}/{season}
+          method: get
+          cors: true
+
+  getTvSeasonEpisodeDetail:
+    handler: handler.getTvEpisodes
+    events:
+      - http:
+          path: tv/{showId}/{season}/{episode}
+          method: get
+          cors: true
+
+
+plugins:
+  - serverless-offline

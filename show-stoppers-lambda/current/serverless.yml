@@ -1,0 +1,103 @@
+
+service: api-backend
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+
+functions:
+  authorise:
+    handler: handler.isUserAuthorised
+
+  getNowAiringTv:
+    handler: handler.getNowAiringTv
+    events:
+      - http:
+          path: tv/now
+          method: get
+          cors: true
+
+  getTvShowDetails:
+    handler: handler.getShowDetails
+    events:
+      - http:
+          path: tv/{showId}
+          method: get
+          cors: true
+
+  getTvShowSearch:
+    handler: handler.getShowSearch
+    events:
+      - http:
+          path: tv/search/{query}/{page}
+          method: get
+          cors: true
+
+  getDiscoverTvFilter:
+    handler: handler.getDiscoverTv
+    events:
+      - http:
+          path: tv/filter
+          method: get
+          cors: true
+
+  getSimilarTvShows:
+    handler: handler.getSimilarShows
+    events:
+      - http:
+          path: tv/similar/{showId}
+          method: get
+          cors: true
+
+  getTvSeasonDetail:
+    handler: handler.getTvSeasons
+    events:
+      - http:
+          path: tv/{showId}/{season}
+          method: get
+          cors: true
+
+  getTvSeasonEpisodeDetail:
+    handler: handler.getTvEpisodes
+    events:
+      - http:
+          path: tv/{showId}/{season}/{episode}
+          method: get
+          cors: true
+
+  getUserFavourites:
+    handler: handler.getUserFavourites
+    events:
+      - http:
+          path: user/favs
+          method: get
+          cors: true
+          authorizer: authorise
+
+  postUserFavourite:
+    handler: handler.getUserFavourites
+    events:
+      - http:
+          path: user/favs
+          method: post
+          cors: true
+          authorizer: authorise 
+
+  register:
+    handler: handler.register
+    events:
+      - http:
+          path: register
+          method: post
+          cors: true
+
+  login: 
+    handler: handler.login
+    events:
+      - http:
+          path: login
+          method: post
+          cors: true
+
+plugins:
+  - serverless-offline
