@@ -154,6 +154,13 @@ module.exports.getTvEpisodes = (event, context, callback) => {
 
 }
 
+/**
+ * Search for the user in the database and return a list of their favourites along
+ * with their basic information
+ * @param {*} event 
+ * @param {*} context 
+ * @param {*} callback 
+ */
 module.exports.getUserFavourites = (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
 
@@ -177,15 +184,40 @@ module.exports.getUserFavourites = (event, context, callback) => {
     })
   }
 
-
 }
 
 module.exports.postUserFavourite = (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
 
+  try{
+    const username = JSON.parse(event.requestContext.authorizer.user).username;
+
+    userActions.postFavourites(username, event, response => {
+      callback(null, {
+        statusCode: 200,
+        body: JSON.stringify({
+          user: response
+        })
+      })
+    })
+  } catch (ex) {
+    callback(null, {
+      statusCode: 400,
+      body: JSON.stringify({
+        error: ex
+      })
+    })
+  }
   
 }
 
+/**
+ * Main login method that checks the email and password before allowing the user to login
+ * must check the hashed password against the one provided
+ * @param {*} event 
+ * @param {*} context 
+ * @param {*} callback 
+ */
 module.exports.login = (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
 
@@ -206,6 +238,13 @@ module.exports.login = (event, context, callback) => {
 
 }
 
+/**
+ * Simple registration form for the user to allow them to register
+ * will set the user as unvalidated initially
+ * @param {*} event 
+ * @param {*} context 
+ * @param {*} callback 
+ */
 module.exports.register = (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
 
@@ -223,6 +262,13 @@ module.exports.register = (event, context, callback) => {
 
 }
 
+/**
+ * Checks the users JWT token to ensure it is valid
+ * if it is the policy will be created else 401 is given
+ * @param {*} event 
+ * @param {*} context 
+ * @param {*} callback 
+ */
 module.exports.isUserAuthorised = (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
 

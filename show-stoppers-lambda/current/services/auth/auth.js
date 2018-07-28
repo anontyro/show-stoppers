@@ -79,19 +79,14 @@ module.exports.register = (event, callback) => {
                 verified: false
             })
             .then(user => {
-                const token = jwt.sign({
-                    id: user._id, username: user.email
-                }, process.env.JWT_SECRET, {expiresIn: 86400});
-                
                 callback({
                     statusCode: 201,
                     body: JSON.stringify({
                         auth: true,
                         username: user.email,
-                        token: token
+                        message: 'User successfully added'
                     })
                 });
-
             })
         })
         .catch(ex => {
